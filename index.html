@@ -443,28 +443,8 @@ https://templatemo.com/tm-557-grad-school
               <h4>At Study Campus</h4>
             </div>
             <figure>
-              <a href="https://www.youtube.com/watch?v=PYZ14VAZgVg" class="play">
-                <img src="assets/images/main-thumb.png" alt="Video Thumbnail">
-              </a>
+              <a href="https://www.youtube.com/watch?v=PYZ14VAZgVg" class="play"><img src="assets/images/main-thumb.png"></a>
             </figure>
-            
-            <!-- Modal for YouTube video -->
-            <div id="videoModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.8); padding: 20px; z-index: 1000; width: 80%; max-width: 800px; border-radius: 8px;">
-              <span id="closeModal" style="cursor: pointer; position: absolute; top: 10px; right: 15px; color: #fff; font-size: 24px; font-weight: bold;">&times;</span>
-              <iframe
-                  id="videoIframe"
-                  width="100%"
-                  height="450"
-                  src=""
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen>
-              </iframe>
-            </div>
-            
-            <!-- Overlay to darken the background -->
-            <div id="modalOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
-            
             
           </article>
         </div>
@@ -609,36 +589,7 @@ https://templatemo.com/tm-557-grad-school
       $(window).scroll(function () {
           checkSection();
       });
-  </script> 
-
-<!-- Include jQuery -->
-
-<script>
-  $(document).ready(function () {
-    // Handle click event on the video thumbnail
-    $('.play').on('click', function (e) {
-      e.preventDefault(); // Prevent the default link behavior
-
-      // Get the YouTube video URL and convert it to embeddable format
-      const videoUrl = $(this).attr('href').replace('watch?v=', 'embed/') + '?autoplay=1';
-
-      // Set the iframe src to the video URL
-      $('#videoIframe').attr('src', videoUrl);
-
-      // Show the modal and overlay
-      $('#videoModal, #modalOverlay').fadeIn();
-    });
-
-    // Close modal when the close button or overlay is clicked
-    $('#closeModal, #modalOverlay').on('click', function () {
-      // Hide the modal and overlay
-      $('#videoModal, #modalOverlay').fadeOut();
-
-      // Remove the video src to stop playback
-      $('#videoIframe').attr('src', '');
-    });
-  });
-</script>
+  </script>
 
 
 </body>
