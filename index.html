@@ -599,6 +599,55 @@ https://templatemo.com/tm-557-grad-school
       });
   </script>
 
+<!--For Email/Sendgrid-->
+
+ <script>
+  document.getElementById('contact').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    const sendGridApiKey = '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'; // Replace with your actual SendGrid API key
+
+    const emailData = {
+      personalizations: [
+        {
+          to: [{ email: 'studycampus.tamana@gmail.com' }], // Replace with recipient email address
+          subject: 'New Contact Form Submission'
+        }
+      ],
+      from: { email: email, name: name },
+      content: [
+        {
+          type: 'text/plain',
+          value: `You have a new message:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`
+        }
+      ]
+    };
+
+    try {
+      const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${sendGridApiKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(emailData)
+      });
+
+      if (response.ok) {
+        alert('Your message was sent successfully!');
+      } else {
+        alert('Failed to send message. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('An error occurred. Please try again.');
+    }
+  });
+</script>
 
 </body>
 </html>
